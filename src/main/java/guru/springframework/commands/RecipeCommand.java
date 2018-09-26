@@ -10,9 +10,7 @@ import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -47,9 +45,9 @@ public class RecipeCommand {
     @NotBlank
     private String directions;
 
-    private List<IngredientCommand> ingredients = new ArrayList<>();
+    private Set<IngredientCommand> ingredients = new HashSet<>();
     private Byte[] image;
     private Difficulty difficulty;
     private NotesCommand notes;
-    private List<CategoryCommand> categories = new ArrayList<>();
+    private Set<CategoryCommand> categories = new HashSet<>();
 }
