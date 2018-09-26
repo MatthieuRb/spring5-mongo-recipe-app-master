@@ -2,11 +2,11 @@ package guru.springframework.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Set;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by jt on 6/13/17.
@@ -15,8 +15,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @Document
 public class Category {
-	@Id
+    @Id
     private String id;
     private String description;
+
+    @DBRef
     private Set<Recipe> recipes;
 }
