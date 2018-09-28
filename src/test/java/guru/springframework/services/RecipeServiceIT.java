@@ -5,8 +5,6 @@ import guru.springframework.converters.RecipeCommandToRecipe;
 import guru.springframework.converters.RecipeToRecipeCommand;
 import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.RecipeRepository;
-import guru.springframework.repositories.reactive.RecipeReactiveRepository;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,7 @@ public class RecipeServiceIT {
     RecipeService recipeService;
 
     @Autowired
-    RecipeReactiveRepository recipeRepository;
+    RecipeRepository recipeRepository;
 
     @Autowired
     RecipeCommandToRecipe recipeCommandToRecipe;
@@ -38,11 +36,10 @@ public class RecipeServiceIT {
     @Autowired
     RecipeToRecipeCommand recipeToRecipeCommand;
 
-  //  @Transactional
     @Test
     public void testSaveOfDescription() throws Exception {
         //given
-        Iterable<Recipe> recipes = recipeRepository.findAll().toIterable();
+        Iterable<Recipe> recipes = recipeRepository.findAll();
         Recipe testRecipe = recipes.iterator().next();
         RecipeCommand testRecipeCommand = recipeToRecipeCommand.convert(testRecipe);
 
